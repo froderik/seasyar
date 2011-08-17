@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "arseasy"
   gem.homepage = "http://github.com/froderik/arseasy"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{active record integration for seasy}
+  gem.description = %Q{Seasy integration. Active record storage for seasy and save hooks in models.}
   gem.email = "fredrik@eldfluga.se"
   gem.authors = ["Fredrik Rubensson"]
   # dependencies defined in Gemfile
