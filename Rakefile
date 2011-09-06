@@ -14,8 +14,8 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "arseasy"
-  gem.homepage = "http://github.com/froderik/arseasy"
+  gem.name = "seasyar"
+  gem.homepage = "http://github.com/froderik/seasyar"
   gem.license = "MIT"
   gem.summary = %Q{active record integration for seasy}
   gem.description = %Q{Seasy integration. Active record storage for seasy and save hooks in models.}
@@ -47,7 +47,19 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "arseasy #{version}"
+  rdoc.title = "seasyar #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new do |t|
+  t.warning = true
+  t.rcov = true
+end
+
+begin
+  require 'tasks/standalone_migrations'
+rescue LoadError => e
+  puts "gem install standalone_migrations to get db:migrate:* tasks! (Error: #{e})"
 end
