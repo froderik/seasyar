@@ -5,7 +5,6 @@ source "http://rubygems.org"
 
 gem "seasy", "0.0.3"
 gem "activerecord"
-gem "multi_json"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
