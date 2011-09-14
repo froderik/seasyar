@@ -2,7 +2,7 @@ require 'activerecordstorage'
 require 'seasydata'
 
 module Seasyar
-  require 'index'
+  require 'seasy'
   
   def index index_name, *fields
     index = Seasy::Index.with_name index_name.to_s
