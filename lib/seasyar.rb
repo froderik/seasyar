@@ -8,7 +8,11 @@ module Seasyar
     index = Seasy::Index.with_name index_name.to_s
     fields.each do |one_field|
       value = self.send one_field
-      index.add value.to_s, self.id.to_s  
+      target = self.id
+      if block_given?
+        target = yield self
+      end
+      index.add value.to_s, target.to_s  
     end
   end  
   

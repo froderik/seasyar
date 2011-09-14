@@ -17,7 +17,7 @@ module Seasyar
       end
     end
     
-    def query question
+    def search question
       hits = Seasyar::SeasyData.find_all_by_key question
       result = {}
       hits.each do |one_hit|
