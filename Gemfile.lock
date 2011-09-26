@@ -41,7 +41,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord
+  activerecord (~> 3.0)
   bundler (~> 1.0.0)
   jeweler (~> 1.6.4)
   rcov

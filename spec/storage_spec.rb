@@ -7,7 +7,6 @@ require 'active_record'
 
 describe Seasyar::ActiveRecordStorage do
   before :all do
-#    ActiveRecord::Base.logger = Logger.new('log/debug.log')
     ActiveRecord::Base.configurations = YAML::load(IO.read('db/config.yml'))
     ActiveRecord::Base.establish_connection('development')
   end
@@ -28,5 +27,23 @@ describe Seasyar::ActiveRecordStorage do
     subject.save target, weights
     
     subject.search( 'es' ).should == {}    
+  end
+  
+  it "should accept a source as basis for what to delete in between adding" do 
+    Seasy.configure do |config|
+      config.storage = Seasyar::ActiveRecordStorage
+    end
+    i = Seasy::Index.new 
+    i.add 'ruben', 'landsnora', :source => 'veddesta'
+    i.search( 'ruben' ).should == {'landsnora' => 1}
+    
+    i.add 'ruben', 'edsberg'
+    i.search( 'ruben' ).should == {'landsnora' => 1, 'edsberg' => 1}
+    
+    i.add 'sten', 'landsnora', :source => 'veddesta'
+    i.search( 'ruben' ).should == {'edsberg' => 1}
+    
+    i.add 'sten', 'edsberg' 
+    i.search( 'ruben' ).should == {}
   end
 end
