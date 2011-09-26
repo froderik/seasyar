@@ -8,6 +8,9 @@ module Seasyar
     ## seasy storage implementation ##
     
     def save target, weights
+      old = SeasyData.find_all_by_target target
+      old.each { |data| data.delete }
+      
       weights.keys.each do |k|
         i = Seasyar::SeasyData.new
         i.key = k

@@ -16,6 +16,17 @@ describe Seasyar::ActiveRecordStorage do
     target = 1
     weights = Fragmentizer.new.fragmentize 'test'
     subject.save target, weights
-    subject.query( 'es' ).should == {"1" => 1}
+    subject.search( 'es' ).should == {"1" => 1}
+  end
+  
+  it "should remove entries when saving new ones" do
+    target = 1
+    weights = Fragmentizer.new.fragmentize 'test'
+    subject.save target, weights
+    
+    weights = Fragmentizer.new.fragmentize 'different'
+    subject.save target, weights
+    
+    subject.search( 'es' ).should == {}    
   end
 end
