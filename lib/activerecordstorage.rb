@@ -8,6 +8,7 @@ module Seasyar
     ## seasy storage implementation ##
     
     def save target, weights
+      # TODO : introduce "source"  and delete by source rather than by target
       old = SeasyData.find_all_by_target target
       old.each { |data| data.delete }
       
