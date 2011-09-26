@@ -1,8 +1,8 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
-require 'activerecordstorage'
-require 'fragmentizer'
+require 'seasyar'
+require 'seasy'
 require 'active_record'
 
 describe Seasyar::ActiveRecordStorage do

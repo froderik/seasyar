@@ -3,7 +3,7 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
-gem "seasy", "0.0.4"
+gem "seasy", "0.0.5"
 gem "activerecord"
 
 # Add dependencies to develop your gem here.
