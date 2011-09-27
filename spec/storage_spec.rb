@@ -14,17 +14,17 @@ describe Seasyar::ActiveRecordStorage do
   it "should save entries and make them searchable" do
     target = 1
     weights = Fragmentizer.new.fragmentize 'test'
-    subject.save target, weights
+    subject.save target, weights, :source => "1"
     subject.search( 'es' ).should == {"1" => 1}
   end
   
   it "should remove entries when saving new ones" do
     target = 1
     weights = Fragmentizer.new.fragmentize 'test'
-    subject.save target, weights
+    subject.save target, weights, :source => "1"
     
     weights = Fragmentizer.new.fragmentize 'different'
-    subject.save target, weights
+    subject.save target, weights, :source => "1"
     
     subject.search( 'es' ).should == {}    
   end
@@ -37,13 +37,13 @@ describe Seasyar::ActiveRecordStorage do
     i.add 'ruben', 'landsnora', :source => 'veddesta'
     i.search( 'ruben' ).should == {'landsnora' => 1}
     
-    i.add 'ruben', 'edsberg'
+    i.add 'ruben', 'edsberg', :source => 'edsberg'
     i.search( 'ruben' ).should == {'landsnora' => 1, 'edsberg' => 1}
     
     i.add 'sten', 'landsnora', :source => 'veddesta'
     i.search( 'ruben' ).should == {'edsberg' => 1}
     
-    i.add 'sten', 'edsberg' 
+    i.add 'sten', 'edsberg', :source => 'edsberg'
     i.search( 'ruben' ).should == {}
   end
 end

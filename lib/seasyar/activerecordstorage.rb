@@ -7,8 +7,8 @@ module Seasyar
     ## seasy storage implementation ##
     
     def save target, weights, options = {}
-      source = target
-      source = options[:source] unless options[:source].nil?
+      raise "source is not set" if options[:source].nil?
+      source = options[:source] 
       
       old = SeasyData.find_all_by_source source
       old.each { |data| data.delete }
@@ -31,6 +31,10 @@ module Seasyar
         result[one_hit.target] = one_hit.weight
       end
       result
+    end
+    
+    def remove deletee
+      Seasyar::SeasyData.find_all_by_source( deletee ) {|data| data.delete}
     end
     
     ## helper methods ##

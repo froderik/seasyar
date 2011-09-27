@@ -3,17 +3,19 @@ module Seasyar
   
   def index index_name, *fields
     index = Seasy::Index.with_name index_name.to_s
+    
+    value = ''
     fields.each do |one_field|
-      value = self.send one_field
-      target = self.id
-      if block_given?
-        source = target
-        target = yield self
-        index.add value.to_s, target.to_s, :source => source.to_s
-      else
-        index.add value.to_s, target.to_s  
-      end
+      value << " #{self.send one_field }"
     end
+    
+    target = self.id
+    source = "#{self.class}:#{target}"
+
+    if block_given?
+      target = yield self
+    end
+    index.add value.to_s, target.to_s, :source => source
   end  
   
   def search index_name, query
@@ -21,5 +23,10 @@ module Seasyar
     index.search query
   end
   
-  module_function :index, :search
+  def remove index_name, source
+    index = Seasy::Index.with_name index_name.to_s
+    index.remove source
+  end
+  
+  module_function :index, :search, :remove
 end

@@ -3,6 +3,11 @@ require 'seasyar'
 
 class Dummy 
   include Seasyar
+  
+  def initialize id, static
+    @id = id
+    @static = static
+  end
 
   INDEX_NAME = "test_index_name" 
 
@@ -15,11 +20,11 @@ class Dummy
   end
   
   def id
-    42
+    @id
   end
   
   def static 
-    'static'
+    @static
   end
 end
 
@@ -32,19 +37,29 @@ describe Seasyar do
       config.storage = Seasyar::ActiveRecordStorage
     end
   end
+
+  before :each do
+    Seasyar::SeasyData.all.each { |data| data.delete }
+  end
   
   it "should save to index" do
-    d = Dummy.new
+    d = Dummy.new 42, 'static'
     d.save
     Seasyar.search( Dummy::INDEX_NAME, 'static' ).should == {42.to_s => 1}
   end
   
   it "should save source" do
-    d = Dummy.new
+    d = Dummy.new 144, 'diff'
     d.save_with_block
-    Seasyar.search( Dummy::INDEX_NAME, 'static' ).should == {666.to_s => 1}
+    Seasyar.search( Dummy::INDEX_NAME, 'diff' ).should == {666.to_s => 1}
     
     d.save # the 666 entry should be removed and 42 be there instead
-    Seasyar.search( Dummy::INDEX_NAME, 'static' ).should == {42.to_s => 1}
+    Seasyar.search( Dummy::INDEX_NAME, 'diff' ).should == {144.to_s => 1}
+  end
+  
+  it "should remove from index" do
+    d = Dummy.new 43, 'static'
+    d.save
+    Seasyar::remove Dummy::INDEX_NAME, 43
   end
 end
