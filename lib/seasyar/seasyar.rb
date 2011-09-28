@@ -23,10 +23,10 @@ module Seasyar
     index.search query
   end
   
-  def remove index_name
+  def unindex index_name
     index = Seasy::Index.with_name index_name.to_s
     index.remove "#{self.class}:#{self.id}"
   end
   
-  module_function :index, :search, :remove
+  module_function :index, :search, :unindex
 end

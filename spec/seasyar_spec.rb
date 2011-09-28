@@ -20,7 +20,7 @@ class Dummy
   end
   
   def removal
-    remove INDEX_NAME
+    unindex INDEX_NAME
   end
   
   def id

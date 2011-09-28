@@ -34,7 +34,7 @@ module Seasyar
     end
     
     def remove deletee
-      Seasyar::SeasyData.find_all_by_source( deletee ) {|data| data.delete}
+      Seasyar::SeasyData.find_all_by_source( deletee ).each {|data| data.delete}
     end
     
     ## helper methods ##
