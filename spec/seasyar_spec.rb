@@ -19,6 +19,10 @@ class Dummy
     index( INDEX_NAME, :static ) {|unused| 666}
   end
   
+  def removal
+    remove INDEX_NAME
+  end
+  
   def id
     @id
   end
@@ -60,6 +64,6 @@ describe Seasyar do
   it "should remove from index" do
     d = Dummy.new 43, 'static'
     d.save
-    Seasyar::remove Dummy::INDEX_NAME, 43
+    d.removal
   end
 end

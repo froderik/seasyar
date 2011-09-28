@@ -23,9 +23,9 @@ module Seasyar
     index.search query
   end
   
-  def remove index_name, source
+  def remove index_name
     index = Seasy::Index.with_name index_name.to_s
-    index.remove source
+    index.remove "#{self.class}:#{self.id}"
   end
   
   module_function :index, :search, :remove
