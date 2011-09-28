@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{seasyar}
-  s.version = "0.0.2"
+  s.name = "seasyar"
+  s.version = "0.0.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Fredrik Rubensson"]
-  s.date = %q{2011-09-14}
-  s.description = %q{Seasy integration. Active record storage for seasy and save hooks in models.}
-  s.email = %q{fredrik@eldfluga.se}
+  s.date = "2011-09-28"
+  s.description = "Seasy integration. Active record storage for seasy and save hooks in models."
+  s.email = "fredrik@eldfluga.se"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -28,24 +28,29 @@ Gem::Specification.new do |s|
     "db/config.yml",
     "db/development.sqlite3",
     "db/migrate/20110906072000_create_index.rb",
+    "db/migrate/20110926212900_add_source.rb",
     "db/schema.rb",
-    "lib/activerecordstorage.rb",
     "lib/seasyar.rb",
-    "lib/seasydata.rb",
+    "lib/seasyar/activerecordstorage.rb",
+    "lib/seasyar/seasyar.rb",
+    "lib/seasyar/seasydata.rb",
+    "seasyar.gemspec",
+    "spec/seasyar_spec.rb",
     "spec/storage_spec.rb"
   ]
-  s.homepage = %q{http://github.com/froderik/seasyar}
+  s.homepage = "http://github.com/froderik/seasyar"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.0}
-  s.summary = %q{active record integration for seasy}
+  s.rubygems_version = "1.8.10"
+  s.summary = "active record integration for seasy"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<seasy>, ["= 0.0.4"])
-      s.add_runtime_dependency(%q<activerecord>, [">= 0"])
+      s.add_runtime_dependency(%q<seasy>, ["= 0.0.6"])
+      s.add_runtime_dependency(%q<activerecord>, ["~> 3.0"])
+      s.add_runtime_dependency(%q<multi_json>, ["~> 1.0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
@@ -53,8 +58,9 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<standalone_migrations>, [">= 0"])
       s.add_development_dependency(%q<sqlite3>, [">= 0"])
     else
-      s.add_dependency(%q<seasy>, ["= 0.0.4"])
-      s.add_dependency(%q<activerecord>, [">= 0"])
+      s.add_dependency(%q<seasy>, ["= 0.0.6"])
+      s.add_dependency(%q<activerecord>, ["~> 3.0"])
+      s.add_dependency(%q<multi_json>, ["~> 1.0"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
@@ -63,8 +69,9 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<sqlite3>, [">= 0"])
     end
   else
-    s.add_dependency(%q<seasy>, ["= 0.0.4"])
-    s.add_dependency(%q<activerecord>, [">= 0"])
+    s.add_dependency(%q<seasy>, ["= 0.0.6"])
+    s.add_dependency(%q<activerecord>, ["~> 3.0"])
+    s.add_dependency(%q<multi_json>, ["~> 1.0"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
