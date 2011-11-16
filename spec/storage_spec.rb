@@ -46,4 +46,16 @@ describe Seasyar::ActiveRecordStorage do
     i.add 'sten', 'edsberg', :source => 'edsberg'
     i.search( 'ruben' ).should == {}
   end
+  
+  it "should have two seperate indices" do
+    Seasy.configure do |config|
+      config.storage = Seasyar::ActiveRecordStorage
+    end
+    i1 = Seasy::Index.with_name 1
+    i2 = Seasy::Index.with_name 2
+    i1.add 'ruben', 'landsnora'#, :source => 'landsnora'
+    i2.add 'ruben', 'edsberg'#, :source => 'edsberg'
+    i1.search( 'ruben').should == {'landsnora' => 1}
+    i2.search( 'ruben').should == {'edsberg' => 1}
+  end
 end
