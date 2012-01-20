@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "seasyar"
-  s.version = "0.0.9"
+  s.version = "0.0.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Fredrik Rubensson"]
-  s.date = "2011-11-20"
+  s.date = "2012-01-20"
   s.description = "Seasy integration. Active record storage for seasy and save hooks in models."
   s.email = "fredrik@eldfluga.se"
   s.extra_rdoc_files = [
