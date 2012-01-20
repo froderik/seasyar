@@ -30,10 +30,13 @@ module Seasyar
     
     def search question
       # todo : count hits.....
-      hits = Seasyar::SeasyData.find_all_by_key_and_index_name question, @name
+      query_parts = question.split ' ' # TODO : split on other white spaces?
       result = {}
-      hits.each do |one_hit|
-        result[one_hit.target] = one_hit.weight
+      query_parts.each do |query_part|
+        hits = Seasyar::SeasyData.find_all_by_key_and_index_name query_part, @name
+        hits.each do |one_hit|
+          result[one_hit.target] = one_hit.weight
+        end
       end
       result
     end
