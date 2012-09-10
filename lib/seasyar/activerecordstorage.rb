@@ -17,15 +17,14 @@ module Seasyar
       old = SeasyData.find_all_by_source source
       old.each { |data| data.delete }
       
-      weights.keys.each do |k|
-        i = Seasyar::SeasyData.new
-        i.key = k
-        i.target = target
-        i.source = source
-        i.weight = weights[k]
-        i.index_name = @name
-        i.save!
+      hash_for_create = weights.keys.map do |k|
+        { :key => k, 
+          :target => target, 
+          :source => source, 
+          :weight => weights[k], 
+          :index_name => @name }
       end
+      Seasyar::SeasyData.create hash_for_create
     end
     
     def search question
