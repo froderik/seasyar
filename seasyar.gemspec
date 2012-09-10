@@ -5,16 +5,16 @@
 
 Gem::Specification.new do |s|
   s.name = "seasyar"
-  s.version = "0.0.10"
+  s.version = "0.0.11"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Fredrik Rubensson"]
-  s.date = "2012-01-20"
+  s.date = "2012-09-10"
   s.description = "Seasy integration. Active record storage for seasy and save hooks in models."
   s.email = "fredrik@eldfluga.se"
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
@@ -22,11 +22,10 @@ Gem::Specification.new do |s|
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
     "db/config.yml",
-    "db/development.sqlite3",
     "db/migrate/20110906072000_create_index.rb",
     "db/migrate/20110926212900_add_source.rb",
     "db/migrate/20111116164500_add_index_name.rb",
@@ -42,7 +41,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/froderik/seasyar"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.24"
   s.summary = "active record integration for seasy"
 
   if s.respond_to? :specification_version then
