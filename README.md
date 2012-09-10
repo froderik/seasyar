@@ -4,11 +4,10 @@ seasyar
 Seasyar is an active record implementation for seasy. It has two parts: an active record implementation of the storage interface of seasy and a way to make it easy to use with an active record model regardless of what storage you use.
 
 
-
 Use seasyar in your rails model classes
 ---------------------------------------
 
-Say you have a person class with the fields first_name, last_name and phone_number. To add search to this put the following somewhere in you class
+Say you have a person class with the fields first_name, last_name and phone_number. To add search to this put the following somewhere in your class:
 
     include Seasyar
      
