@@ -7,6 +7,7 @@ class Dummy
   def initialize id, static
     @id = id
     @static = static
+    @static_changed = true
   end
 
   INDEX_NAME = "test_index_name"
@@ -19,6 +20,11 @@ class Dummy
     index( INDEX_NAME, :static ) { 666 }
   end
 
+  def save_unchanged
+    @static_changed = false
+    index INDEX_NAME, :static
+  end
+
   def removal
     unindex INDEX_NAME
   end
@@ -29,6 +35,10 @@ class Dummy
 
   def static
     @static
+  end
+
+  def static_changed?
+    @static_changed
   end
 end
 
@@ -66,5 +76,14 @@ describe Seasyar do
     d.save
     d.removal
     Seasyar.search( Dummy::INDEX_NAME, 'static' ).should be_empty
+  end
+
+  it "should only save when changed" do
+    key = 'nonchanging'
+    d = Dummy.new 4711, key
+    d.save
+    stamp = Seasyar::SeasyData.find_by_key( key ).updated_at
+    d.save_unchanged
+    Seasyar::SeasyData.find_by_key( key ).updated_at.should == stamp
   end
 end
