@@ -5,7 +5,12 @@ module Seasyar
     index = Seasy::Index.with_name index_name.to_s
 
     has_changed = fields.detect do |one_field|
-      self.send "#{one_field}_changed?".to_sym
+      changed_method = "#{one_field}_changed?".to_sym
+      if self.respond_to? changed_method
+        self.send changed_method
+      else
+        true
+      end
     end
 
     if has_changed
