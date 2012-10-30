@@ -16,7 +16,7 @@ class Dummy
   end
 
   def save_with_block
-    index( INDEX_NAME, :static ) {|unused| 666}
+    index( INDEX_NAME, :static ) { 666 }
   end
 
   def removal
