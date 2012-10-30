@@ -9,19 +9,22 @@ module Seasyar
     end
 
     if has_changed
-      value = ''
-      fields.each do |one_field|
-        value << " #{self.send one_field }"
-      end
+      value = aggregated_value fields
 
-      target = self.id
-      source = "#{self.class}:#{target}"
+      source = "#{self.class}:#{self.id}"
 
-      if block_given?
-        target = yield self
-      end
+      target = block_given? ? yield( self ) : self.id
+
       index.add value.to_s, target.to_s, :source => source
     end
+  end
+
+  def aggregated_value fields
+    value = ''
+    fields.each do |one_field|
+      value << " #{self.send one_field }"
+    end
+    value
   end
 
   def search index_name, query
