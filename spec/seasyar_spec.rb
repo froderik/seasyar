@@ -29,6 +29,10 @@ class Dummy
     unindex INDEX_NAME
   end
 
+  def save_for_reindex
+    reindex INDEX_NAME, :static
+  end
+
   def id
     @id
   end
@@ -85,5 +89,14 @@ describe Seasyar do
     stamp = Seasyar::SeasyData.find_by_key( key ).updated_at
     d.save_unchanged
     Seasyar::SeasyData.find_by_key( key ).updated_at.should == stamp
+  end
+
+  it "reindex should always save" do
+    key = 'nonchanging'
+    d = Dummy.new 4711, key
+    d.save
+    stamp = Seasyar::SeasyData.find_by_key( key ).updated_at
+    d.save_for_reindex
+    Seasyar::SeasyData.find_by_key( key ).updated_at.should > stamp
   end
 end
