@@ -19,7 +19,17 @@ Say you have a person class with the fields first_name, last_name and phone_numb
       unindex index_name
     end
 
-and seasyar will use the configured seasy storage to update the named index. 
+and seasyar will use the configured seasy storage to update the named index. If none of the fields have changed the index will not be updated. 
+
+Also included with the module is a reindex method that can be used to force reindexing for an object. Just use it in the same way as index.
+
+    reindex index_name, :first_name, :last_name, :phone_number
+
+This can be useful when adding seasyar for the first time to put index on all existing objects. Something like:
+
+    Person.all.each { |p| p.reindex index_name, :first_name, :last_name, :phone_number }
+
+on the command line will do it.
 
 
 Searching
