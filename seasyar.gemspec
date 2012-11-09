@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "seasyar"
-  s.version = "0.0.13"
+  s.version = "0.0.14"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Fredrik Rubensson"]
-  s.date = "2012-10-30"
+  s.date = "2012-11-09"
   s.description = "Seasy integration. Active record storage for seasy and save hooks in models."
   s.email = "fredrik@eldfluga.se"
   s.extra_rdoc_files = [
@@ -49,33 +49,30 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<seasy>, [">= 0.0.9"])
-      s.add_runtime_dependency(%q<activerecord>, ["~> 3.0"])
+      s.add_runtime_dependency(%q<activerecord>, ["~> 3.2"])
       s.add_runtime_dependency(%q<multi_json>, ["~> 1.0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
-      s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<bundler>, [">= 0"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<standalone_migrations>, [">= 0"])
       s.add_development_dependency(%q<sqlite3>, [">= 0"])
     else
       s.add_dependency(%q<seasy>, [">= 0.0.9"])
-      s.add_dependency(%q<activerecord>, ["~> 3.0"])
+      s.add_dependency(%q<activerecord>, ["~> 3.2"])
       s.add_dependency(%q<multi_json>, ["~> 1.0"])
       s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
-      s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<bundler>, [">= 0"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<standalone_migrations>, [">= 0"])
       s.add_dependency(%q<sqlite3>, [">= 0"])
     end
   else
     s.add_dependency(%q<seasy>, [">= 0.0.9"])
-    s.add_dependency(%q<activerecord>, ["~> 3.0"])
+    s.add_dependency(%q<activerecord>, ["~> 3.2"])
     s.add_dependency(%q<multi_json>, ["~> 1.0"])
     s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
-    s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<bundler>, [">= 0"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<standalone_migrations>, [">= 0"])
     s.add_dependency(%q<sqlite3>, [">= 0"])
   end
