@@ -14,7 +14,7 @@ module Seasyar
       raise "source is not set" if options[:source].nil?
       source = options[:source] 
       
-      old = SeasyData.find_all_by_source source
+      old = SeasyData.where source: source
       old.each { |data| data.delete }
       
       hash_for_create = weights.keys.map do |k|
@@ -32,7 +32,7 @@ module Seasyar
       query_parts = question.split ' ' # TODO : split on other white spaces?
       result = {}
       query_parts.each do |query_part|
-        hits = Seasyar::SeasyData.find_all_by_key_and_index_name query_part, @name
+        hits = Seasyar::SeasyData.where key: query_part, index_name: @name
         hits.each do |one_hit|
           result[one_hit.target] = one_hit.weight
         end
@@ -41,7 +41,7 @@ module Seasyar
     end
     
     def remove deletee
-      Seasyar::SeasyData.find_all_by_source( deletee ).each {|data| data.delete}
+      Seasyar::SeasyData.where( source: deletee ).each {|data| data.delete}
     end
     
     ## helper methods ##
