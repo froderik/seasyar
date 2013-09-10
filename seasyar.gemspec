@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "seasyar"
-  s.version = "0.0.14"
+  s.version = "0.0.15"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Fredrik Rubensson"]
-  s.date = "2012-11-09"
+  s.date = "2013-09-10"
   s.description = "Seasy integration. Active record storage for seasy and save hooks in models."
   s.email = "fredrik@eldfluga.se"
   s.extra_rdoc_files = [
@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
-    ".rvmrc",
+    ".ruby-version",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
@@ -41,16 +41,15 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/froderik/seasyar"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "2.0.8"
   s.summary = "active record integration for seasy"
 
   if s.respond_to? :specification_version then
-    s.specification_version = 3
+    s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<seasy>, [">= 0.0.9"])
-      s.add_runtime_dependency(%q<activerecord>, ["~> 3.2"])
-      s.add_runtime_dependency(%q<multi_json>, ["~> 1.0"])
+      s.add_runtime_dependency(%q<activerecord>, [">= 3.2"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
@@ -58,8 +57,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<sqlite3>, [">= 0"])
     else
       s.add_dependency(%q<seasy>, [">= 0.0.9"])
-      s.add_dependency(%q<activerecord>, ["~> 3.2"])
-      s.add_dependency(%q<multi_json>, ["~> 1.0"])
+      s.add_dependency(%q<activerecord>, [">= 3.2"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
@@ -68,8 +66,7 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<seasy>, [">= 0.0.9"])
-    s.add_dependency(%q<activerecord>, ["~> 3.2"])
-    s.add_dependency(%q<multi_json>, ["~> 1.0"])
+    s.add_dependency(%q<activerecord>, [">= 3.2"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
