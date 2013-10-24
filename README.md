@@ -67,6 +67,10 @@ You also need to put the following migration somewhere in your code (might build
       t.string   "index_name"
     end
     
+    add_index :seasy_data, :source
+    add_index :seasy_data, [:key, :index_name]
+
+    
 
 Copyright
 ---------
